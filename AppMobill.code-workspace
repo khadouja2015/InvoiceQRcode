@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\xampp\\htdocs\\personnelQRcode"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "AppMobill"
+	}
+}

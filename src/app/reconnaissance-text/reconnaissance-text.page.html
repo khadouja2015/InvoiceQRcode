@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reconnaissance d'un QR code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-label><b>Texte à encoder:</b></ion-label>
+    <ion-input [(ngModel)]="textToCode" placeholder="Entrez votre URL"></ion-input>
+  </ion-item>
+   <ion-button color="tertiary" expand="block" (click)="createQRCode()" > 
+    <ion-icon slot="start" name="create"></ion-icon>
+    Créer un QR Code
+  </ion-button>
+  <div class="center">
+    <qrcode [qrdata]="myAngularxQrCode2" [size]="250" [level]="'M'"></qrcode>
+  </div>
+  <div >
+  <ion-button expand="block" (click)="scanCode()" >
+    <ion-icon slot="start" name="qr-scanner"></ion-icon>
+    Scanner un QR Code
+  </ion-button>
+  <ion-item *ngIf="textScanned" lines="none">
+    <ion-label>
+      <p>Texte du QR Code</p>
+      <h2><b>{{ textScanned }}</b></h2>
+    </ion-label>
+  </ion-item>
+  </div>
+  <ion-button *ngIf="showCamera" (click)="closeCamera()">
+    <ion-icon name="close"></ion-icon>
+  </ion-button>
+  <ion-button size="small" (click)="getPicture()">
+    <ion-icon name="camera" slot="start"></ion-icon>
+    <ion-label>Upload Image</ion-label>
+  </ion-button>
+  <ion-button size="small" (click)="getPicture()">
+    <ion-icon name="image" slot="start"></ion-icon>
+    <ion-label>Gallery</ion-label>
+  </ion-button>
+  <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+
+  <ion-card *ngIf="photo">
+    <ion-card-content>
+      <img [src]="photo">
+    </ion-card-content>
+  </ion-card>
+</ion-content>
